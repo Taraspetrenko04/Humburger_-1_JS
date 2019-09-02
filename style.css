@@ -1,0 +1,57 @@
+body{
+    
+}
+
+.section__logo{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+.section__bar{
+    width: 1200px;
+    margin: 0 auto;
+    background-color: lightgreen;
+    top: 50px;
+}
+
+.section__type{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.section__name{
+    display: inline-block;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    text-transform: uppercase;
+    margin: 15px;
+    margin-right: 0;
+
+}
+.section__choice{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 15px;
+    padding: 5px;
+    font-size: 20px;
+    margin-left: 0;
+
+}
+
+.section__button{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    text-transform: uppercase;
+    padding: 5px;
+    background-color: lightcoral;
+
+}
+.orange{
+    background-color: orange;
+}
+.green{
+    background-color: lawngreen;
+}
+
+.blue{
+    background-color: lightblue;
+}

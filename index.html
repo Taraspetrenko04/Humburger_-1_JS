@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body>
+
+    <div class="section__bar">
+        <h1 class="section__logo">--HUMBURGER--</h1>
+        <div class="section__type">
+            <p class="section__name">choose hamburger size:</p>
+            <select name="burger" class="section__choice size">
+                <option value="SIZE_LARGE">LARGE BURGER</option>
+                <option value="SIZE_SMALL">SMALL burger</option>
+            </select>
+            <p class="section__name">stuffing:</p>
+            <select name="stuffing" class="section__choice stuffing">
+                <option value="STUFFING_CHEESE">CHEES</option>
+                <option value="STUFFING_SALAD">SALAD</option>
+                <option value="STUFFING_POTATO">POTATO</option>
+            </select>
+
+            <p class="section__name">topping:</p>
+            <select name="topping" class="section__choice toppings">
+                <option value="NONE">NONE</option>
+                <option value="TOPPING_MAYO">MAYONES</option>
+                <option value="TOPPING_SPICE">SPICE</option>
+            </select>
+            <button class="section__button addTopping orange">+ADD</button>
+            <button class="section__button removeTopping orange">-REMOVE</button>
+        </div>
+        <button class="section__button create">Create Burger</button>
+        <button class="section__button getToppings green">Get Toppings</button>
+        <button class="section__button getSize green">Get Size</button>
+        <button class="section__button getStuff green">Get Stuffing</button>
+        <button class="section__button getPrice blue">Get $ Price</button>
+        <button class="section__button getCal blue">Get Calories</button>
+    </div>
+
+</body>
+
+</html>
