@@ -69,7 +69,21 @@ window.onload = function () {
         stuffing = document.getElementsByClassName('stuffing')[0].value;
         curTopping = document.getElementsByClassName('toppings')[0].value;
         // humburger.createhumburger(size, stuffing) ;
+
+        // Catch exeption
+        try{
+            if (!size){
+                throw new SyntaxError("choose the size corectly!!!")
+            }
+        }catch(e){
+            removeMessage();
+            setMessage( e.message );
+            return;
+        }
+// 
         humburger = new Humburger(size, stuffing);
+        removeMessage();
+        setMessage( ' humburger created ');
         console.log(humburger);
         return humburger;
     });
@@ -78,12 +92,16 @@ window.onload = function () {
     var btnAddSpice = document.getElementsByClassName('addTopping')[0];
     btnAddSpice.addEventListener('click', function () {
         if (humburger === undefined) {
+            removeMessage();
+            setMessage("Create a humburger, please");
             console.log("Create a humburger, please");
             return
         };
         curTopping = document.getElementsByClassName('toppings')[0].value;
         // console.log(typeof humburger)
         humburger.addTopping(curTopping);
+        removeMessage();
+        setMessage("You have added a topping :" + curTopping );
         console.log(humburger);
 
     });
@@ -111,11 +129,15 @@ window.onload = function () {
     var btnRemoveSpice = document.getElementsByClassName('removeTopping')[0];
     btnRemoveSpice.addEventListener('click', function () {
         if (humburger === undefined) {
-            console.log("Create a humburger, please");
+            removeMessage();
+            setMessage("Create a humburger, please" );
+            console.log( "Create a humburger, please" );
             return
         };
         curTopping = document.getElementsByClassName('toppings')[0].value;
         humburger.removeTopping(curTopping);
+        removeMessage();
+        setMessage("You removed :" + curTopping);
         console.log(humburger);
 
     })
@@ -124,19 +146,24 @@ window.onload = function () {
     // Get Toppings
     Humburger.prototype.getToppings = function () {
         if (this._toppings.length === 0) {
-            console.log("You didn't add any topping");
+            removeMessage();
+            setMessage("You didn't add any topping");
+            console.log( "You didn't add any topping" );
             return;
         }
         var alltoppings = this._toppings.join(', ');
+        removeMessage();
+        setMessage('You chose: ' + alltoppings);
         console.log('You chose: ' + alltoppings);
-        // let [f, g] = this._toppings;
         return this._toppings;
     }
 
     var btnGetToppings = document.getElementsByClassName('getToppings')[0];
     btnGetToppings.addEventListener('click', function () {
         if (humburger === undefined) {
-            return console.log("Create Humburger, please");
+            removeMessage();
+            setMessage("Create a Humburger, please");
+            return console.log("Create a Humburger, please");
         }
         humburger.getToppings();
     });
@@ -146,9 +173,13 @@ window.onload = function () {
     var btnGetSize = document.getElementsByClassName('getSize')[0];
     btnGetSize.addEventListener('click', function () {
         if (humburger === undefined) {
+            removeMessage();
+            setMessage("Create a Humburger, please");
             console.log(`Create humburger, please.`);
             return;
         }
+        removeMessage();
+        setMessage("Humburger has  " + humburger.getSize() );
         console.log(`Humburger has ${humburger.getSize()} `);
 
     });
@@ -161,9 +192,13 @@ window.onload = function () {
     var btnGetStuff = document.getElementsByClassName('getStuff')[0];
     btnGetStuff.addEventListener('click', function () {
         if (humburger === undefined) {
-            console.log(`Create humburger, please.`);
+            removeMessage();
+            setMessage("Create a Humburger, please");
+            console.log(`Create a humburger, please.`);
             return;
         }
+        removeMessage();
+        setMessage("Humburger has " + humburger.getStuffing());
         console.log(`Humburger has ${humburger.getStuffing()}`);
 
     });
@@ -177,9 +212,13 @@ window.onload = function () {
     var btnGetPrice = document.getElementsByClassName('getPrice')[0];
     btnGetPrice.addEventListener('click', function () {
         if (humburger === undefined) {
-            console.log(`Create humburger, please.`);
+            removeMessage();
+            setMessage("Create a Humburger, please");
+            console.log(`Create a humburger, please.`);
             return;
         }
+        removeMessage();
+        setMessage("Hamburger's price is: " + humburger.calculatePrice() + "$" );
         console.log("Hamburger's price is: " + humburger.calculatePrice() + "$");
     })
 
@@ -203,9 +242,13 @@ window.onload = function () {
     var btnGetCal = document.getElementsByClassName('getCal')[0];
     btnGetCal.addEventListener('click', function () {
         if (humburger === undefined) {
-            console.log(`Create humburger, please.`);
+            removeMessage();
+            setMessage("Create a Humburger, please");
+            console.log(`Create a humburger, please.`);
             return;
         }
+        removeMessage();
+        setMessage("Energy value is: " + humburger.calculateCalories() + " Calories" );
         console.log("Energy value is: " + humburger.calculateCalories() + " Calories");
     })
 
@@ -225,5 +268,17 @@ window.onload = function () {
         }
         return callories;
     }
+    // set Message
+    function setMessage (message) {
+        document.querySelector('.section__message').innerHTML = message;
+    }
+
+    // remove Message
+    function removeMessage () {
+        document.querySelector('.section__message').innerHTML = "";
+        
+    }
+
+
 
 }
